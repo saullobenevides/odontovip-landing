@@ -1,0 +1,782 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>OdontoVip — Clínica Odontológica em Vitória da Conquista</title>
+<meta name="description" content="OdontoVip: atendimento odontológico completo para toda a família em Vitória da Conquista. 4,9 estrelas no Google. Agende sua avaliação pelo WhatsApp.">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+
+<style>
+:root{
+  --navy:#1B2A66;--navy-deep:#121E4D;--navy-700:#243a87;
+  --teal:#27BFD3;--teal-dark:#1AA3B6;--teal-soft:#E7FAFD;
+  --purple:#7E3FB0;--green:#25D366;--green-600:#1eb858;
+  --bg:#FFFFFF;--bg-soft:#F1F6FB;--bg-tint:#EAF2FB;
+  --title:#16224F;--text:#5A6783;--border:#E2E9F3;
+  --shadow:0 22px 48px -26px rgba(27,42,102,.40);
+  --shadow-card:0 14px 34px -20px rgba(27,42,102,.30);
+  --radius:20px;--radius-lg:30px;--maxw:1180px;
+  --display:'Poppins',system-ui,sans-serif;--body:'Inter',system-ui,sans-serif;
+  --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-in-out: cubic-bezier(0.65, 0, 0.35, 1);
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:var(--body);color:var(--text);background:var(--bg);line-height:1.65;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+h1,h2,h3,h4{font-family:var(--display);color:var(--title);line-height:1.18;font-weight:700;letter-spacing:-.01em}
+a{text-decoration:none;color:inherit}
+img{max-width:100%;display:block}
+ul{list-style:none}
+.container{max-width:var(--maxw);margin:0 auto;padding:0 24px}
+.section{padding:96px 0}
+.teal-text{color:var(--teal-dark)}
+
+/* smile motif */
+.smile{display:block}
+.smile path{fill:none;stroke-linecap:round}
+
+/* section headers */
+.section-head{max-width:680px;margin-bottom:50px}
+.section-head.center{margin-left:auto;margin-right:auto;text-align:center}
+.section-head h2{font-size:clamp(1.8rem,3.6vw,2.6rem);margin:14px 0 14px;font-weight:800}
+.section-head p{font-size:1.06rem}
+.section-head .deco{display:flex;align-items:center;gap:10px;color:var(--teal-dark);font-weight:600;font-size:.88rem;letter-spacing:.03em}
+.section-head .deco svg{width:20px;height:20px;stroke:currentColor;fill:none;stroke-width:2;stroke-linecap:round}
+.section-head .deco-line{flex:0 0 32px;height:2px;border-radius:1px;background:var(--teal)}
+.section-head .deco span{opacity:.85}
+
+/* buttons */
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:9px;font-family:var(--display);
+  font-weight:600;font-size:1rem;padding:15px 26px;border-radius:14px;cursor:pointer;border:none;
+  transition:transform .3s var(--ease-out),box-shadow .3s var(--ease-out),background .25s;white-space:nowrap}
+.btn-wa{background:var(--green);color:#fff;box-shadow:0 8px 20px -8px rgba(37,211,102,.5)}
+.btn-wa:hover{background:var(--green-600);transform:translateY(-3px);box-shadow:0 12px 24px -6px rgba(37,211,102,.6)}
+.btn-ghost{background:#fff;color:var(--navy);border:1.5px solid var(--border)}
+.btn-ghost:hover{border-color:var(--teal);color:var(--teal-dark);transform:translateY(-3px);box-shadow:0 8px 20px -8px rgba(39,191,211,.2)}
+.btn-navy{background:var(--navy);color:#fff;box-shadow:0 8px 20px -8px rgba(27,42,102,.3)}
+.btn-navy:hover{background:var(--navy-700);transform:translateY(-3px);box-shadow:0 12px 24px -6px rgba(27,42,102,.4)}
+
+/* navbar */
+header{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(255,255,255,.75);
+  backdrop-filter:saturate(180%) blur(20px);-webkit-backdrop-filter:saturate(180%) blur(20px);
+  border-bottom:1px solid rgba(255,255,255,0.4);transition:border-color .3s,box-shadow .3s,background .3s}
+header.scrolled{border-color:var(--border);box-shadow:0 10px 30px -15px rgba(27,42,102,.12);background:rgba(255,255,255,.9)}
+.nav{display:flex;align-items:center;justify-content:space-between;height:78px}
+.logo-img{height:48px;width:auto}
+.nav-links{display:flex;align-items:center;gap:28px}
+.nav-links a{font-weight:500;font-size:.96rem;color:var(--text);transition:color .15s;position:relative}
+.nav-links a::after{content:'';position:absolute;bottom:-3px;left:0;width:0;height:2px;border-radius:1px;background:var(--teal);transition:width .3s var(--ease-out)}
+.nav-links a:hover{color:var(--teal-dark)}
+.nav-links a:hover::after{width:100%}
+.nav-cta{display:flex;align-items:center;gap:12px}
+.nav-cta .btn{padding:11px 18px;font-size:.92rem}
+.hamburger{display:none;background:none;border:none;cursor:pointer;width:44px;height:44px;border-radius:11px;padding:0}
+.hamburger span{display:block;width:22px;height:2px;background:var(--navy);margin:5px auto;border-radius:2px;transition:transform .3s var(--ease-in-out),opacity .2s}
+.hamburger.open span:nth-child(1){transform:translateY(7px) rotate(45deg)}
+.hamburger.open span:nth-child(2){opacity:0}
+.hamburger.open span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
+.mobile-menu{position:fixed;inset:78px 0 auto 0;background:#fff;border-bottom:1px solid var(--border);
+  transform:translateY(-140%);transition:transform .4s var(--ease-out);z-index:99;padding:18px 24px 28px}
+.mobile-menu.open{transform:translateY(0)}
+.mobile-menu a{display:block;padding:13px 4px;font-weight:500;border-bottom:1px solid var(--bg-soft);color:var(--text);-webkit-tap-highlight-color:transparent}
+.mobile-menu .btn{width:100%;margin-top:16px}
+
+/* hero */
+.hero{position:relative;padding:150px 0 96px;overflow:hidden;
+  background:linear-gradient(170deg,#fff 0%,var(--bg-tint) 100%)}
+.hero-blob{position:absolute;border-radius:50%;z-index:0}
+.hero-blob.a{top:-160px;right:-120px;width:560px;height:560px;background:radial-gradient(circle at 35% 35%,rgba(39,191,211,.30),transparent 62%)}
+.hero-blob.b{bottom:-220px;left:-150px;width:520px;height:520px;background:radial-gradient(circle at 50% 50%,rgba(27,42,102,.12),transparent 62%)}
+.hero .smile-top{position:absolute;top:96px;left:24px;width:120px;height:42px;z-index:1;opacity:.9}
+.hero-grid{position:relative;z-index:2;display:grid;grid-template-columns:1.06fr .94fr;gap:56px;align-items:center}
+.hero-text{opacity:0;transform:translateY(18px);transition:opacity .8s var(--ease-out),transform .8s var(--ease-out)}
+.hero-text.visible{opacity:1;transform:none}
+.hero-he .hero-el{opacity:0;transform:translateY(16px)}
+.hero-text.visible .hero-el{animation:heroIn .7s var(--ease-out) forwards}
+@keyframes heroIn{to{opacity:1;transform:none}}
+.hero h1{font-size:clamp(2.1rem,4.7vw,3.5rem);font-weight:800;margin:22px 0 18px}
+.hero p.lead{font-size:1.14rem;max-width:520px;margin-bottom:12px}
+.hero p.sub{font-size:1rem;max-width:500px;margin-bottom:26px}
+.hero-label{display:inline-flex;align-items:center;gap:8px;font-family:var(--display);font-weight:700;
+  font-size:.82rem;letter-spacing:.04em;color:#fff;background:var(--teal);
+  padding:8px 16px;border-radius:999px;box-shadow:0 8px 18px -8px rgba(39,191,211,.6)}
+.hero-label svg{width:14px;height:14px;stroke:#fff;fill:none;stroke-width:2.5;stroke-linecap:round}
+.rating-badge{display:inline-flex;align-items:center;gap:12px;background:#fff;border:1px solid var(--border);
+  border-radius:16px;padding:11px 16px;box-shadow:var(--shadow-card);margin-bottom:26px}
+.rating-badge .num{font-family:var(--display);font-weight:800;font-size:1.5rem;color:var(--navy);line-height:1}
+.rating-badge .stars{color:#FBB400;font-size:.95rem;letter-spacing:1px;line-height:1}
+.rating-badge .lbl{font-size:.82rem;color:var(--text)}
+.rating-badge .lbl b{color:var(--navy)}
+.hero-actions{display:flex;flex-wrap:wrap;gap:14px;margin-bottom:30px}
+.mini-cards{display:flex;flex-wrap:wrap;gap:10px 22px}
+.mini-cards li{display:flex;align-items:center;gap:9px;font-weight:500;font-size:.94rem;color:var(--navy)}
+.mini-cards .check{width:22px;height:22px;border-radius:7px;background:var(--teal-soft);color:var(--teal-dark);display:grid;place-items:center;font-size:.7rem;flex-shrink:0}
+
+.hero-visual{position:relative}
+.hero-photo{position:relative;border-radius:var(--radius-lg);overflow:hidden;aspect-ratio:4/5;
+  box-shadow:var(--shadow);display:block}
+.hero-photo img{width:100%;height:100%;object-fit:cover;transition:transform .6s var(--ease-out)}
+.hero-photo:hover img{transform:scale(1.04)}
+.hero-floating{position:absolute;bottom:22px;left:-22px;background:#fff;border-radius:18px;padding:14px 18px;
+  box-shadow:var(--shadow-card);display:flex;align-items:center;gap:13px;border:1px solid var(--border);
+  animation:float 4s var(--ease-in-out) infinite}
+@keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-8px)}}
+.hero-floating .ic{width:42px;height:42px;border-radius:12px;background:var(--green);color:#fff;display:grid;place-items:center;flex-shrink:0}
+.hero-floating .ic svg{width:20px;height:20px;fill:#fff}
+.hero-floating strong{font-family:var(--display);color:var(--navy);display:block;font-size:.96rem}
+.hero-floating span{font-size:.8rem}
+
+/* proof strip */
+.proof{background:var(--navy);position:relative;overflow:hidden}
+.proof .smile-deco{position:absolute;right:30px;top:-10px;width:100px;height:36px;opacity:.5}
+.proof-grid{position:relative;display:grid;grid-template-columns:repeat(4,1fr);gap:14px;padding:30px 0}
+.proof-item{display:flex;align-items:center;gap:12px;justify-content:center}
+.proof-item .pic{width:28px;height:28px;flex-shrink:0;stroke:#9fb4e8;fill:none;stroke-width:2;stroke-linecap:round}
+.proof-item p{font-size:.92rem;font-weight:500;color:#fff;line-height:1.4}
+.proof-item p span{color:#9fb4e8}
+
+/* sobre */
+.about-grid{display:grid;grid-template-columns:.92fr 1.08fr;gap:54px;align-items:center}
+.about-photo{border-radius:var(--radius-lg);aspect-ratio:1/1;
+  box-shadow:var(--shadow-card);display:block;overflow:hidden}
+.about-photo img{width:100%;height:100%;object-fit:cover;transition:transform .6s var(--ease-out)}
+.about-photo:hover img{transform:scale(1.04)}
+.about-cards{display:flex;gap:12px;margin-top:28px;flex-wrap:wrap}
+.about-cards .card{flex:1;min-width:140px;border:1px solid var(--border);border-radius:16px;padding:18px;background:#fff}
+.about-cards h4{font-size:1rem;margin-bottom:6px;color:var(--teal-dark)}
+.about-cards p{font-size:.88rem}
+.about .btn{margin-top:28px}
+
+/* serviços */
+.services{background:var(--bg-soft);position:relative}
+.services-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:20px;justify-content:center}
+.service-card{background:#fff;border:1px solid var(--border);border-radius:var(--radius);padding:26px 22px;
+  transition:transform .4s var(--ease-out),box-shadow .4s var(--ease-out),border-color .3s}
+.service-card:hover{transform:translateY(-6px);box-shadow:0 20px 38px -18px rgba(27,42,102,.15);border-color:var(--teal)}
+.service-card .ic{width:52px;height:52px;border-radius:15px;background:var(--teal-soft);color:var(--teal-dark);
+  display:grid;place-items:center;margin-bottom:15px}
+.service-card .ic svg{width:24px;height:24px;stroke:currentColor;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.service-card h3{font-size:1.05rem;margin-bottom:8px;font-weight:700;color:var(--navy)}
+.service-card p{font-size:.91rem}
+
+/* diferenciais */
+.diff-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:22px;justify-content:center}
+.diff-item{text-align:center;transition:transform .3s ease}
+.diff-item:hover{transform:translateY(-4px)}
+.diff-item .medal{width:84px;height:84px;border-radius:50%;margin:0 auto 18px;display:grid;place-items:center;
+  color:#fff;box-shadow:0 16px 30px -14px rgba(27,42,102,.3);position:relative;transition:transform .4s var(--ease-out),box-shadow .4s var(--ease-out)}
+.diff-item:hover .medal{transform:scale(1.05);box-shadow:0 20px 35px -10px rgba(27,42,102,.4)}
+.diff-item:nth-child(odd) .medal{background:var(--navy)}
+.diff-item:nth-child(even) .medal{background:var(--teal)}
+.diff-item .medal svg{width:32px;height:32px;stroke:#fff;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.diff-item h3{font-size:1.02rem;margin-bottom:8px;font-weight:700;color:var(--navy)}
+.diff-item p{font-size:.9rem}
+
+/* CTA */
+.cta-band{padding:0 0 96px}
+.cta-inner{position:relative;overflow:hidden;border-radius:var(--radius-lg);text-align:center;color:#fff;padding:66px 56px;
+  background:linear-gradient(125deg,var(--navy-deep),var(--navy) 48%,var(--teal))}
+.cta-inner .smile-deco{position:absolute;width:120px;height:42px;opacity:.5}
+.cta-inner .smile-deco.tl{top:26px;left:30px}
+.cta-inner .smile-deco.br{bottom:26px;right:30px;transform:rotate(180deg)}
+.cta-inner h2{color:#fff;font-size:clamp(1.6rem,3.4vw,2.3rem);max-width:680px;margin:0 auto 14px;font-weight:800;position:relative}
+.cta-inner p{color:rgba(255,255,255,.92);max-width:540px;margin:0 auto 28px;font-size:1.06rem;position:relative}
+.cta-inner .btn{position:relative;font-size:1.05rem;padding:17px 32px}
+
+/* depoimentos */
+.testi{background:var(--bg-soft)}
+.testi-scroll{display:flex;gap:22px;overflow-x:auto;scroll-snap-type:x mandatory;-webkit-overflow-scrolling:touch;
+  scrollbar-width:none;-ms-overflow-style:none;padding-bottom:8px}
+.testi-scroll::-webkit-scrollbar{display:none}
+.testi-card{flex:0 0 calc(33.333% - 15px);scroll-snap-align:start;background:#fff;border:1px solid var(--border);
+  border-radius:var(--radius);padding:28px 26px;box-shadow:var(--shadow-card);display:flex;flex-direction:column;gap:14px}
+.testi-card .stars{color:#FBB400;letter-spacing:1px;font-size:.95rem}
+.testi-card p{font-size:.97rem;color:var(--title);flex:1;line-height:1.6}
+.testi-card .who{display:flex;align-items:center;gap:12px}
+.testi-card .av{width:42px;height:42px;border-radius:50%;display:grid;place-items:center;font-family:var(--display);
+  font-weight:700;color:#fff;background:var(--teal);flex-shrink:0}
+.testi-card .who b{display:block;color:var(--navy);font-family:var(--display);font-size:.95rem}
+.testi-card .who span{font-size:.78rem;color:var(--text)}
+.testi-nav{display:flex;justify-content:center;gap:12px;margin-top:34px}
+.testi-nav button{width:46px;height:46px;border-radius:50%;border:1.5px solid var(--border);background:#fff;cursor:pointer;
+  color:var(--navy);font-size:1.2rem;transition:border-color .2s,color .2s,transform .2s,box-shadow .2s;display:grid;place-items:center}
+.testi-nav button:hover{border-color:var(--teal);color:var(--teal-dark);transform:translateY(-2px);box-shadow:0 6px 14px -8px rgba(39,191,211,.3)}
+.testi-source{text-align:center;margin-top:18px;font-size:.86rem;color:var(--text)}
+.testi-source a{color:var(--teal-dark);font-weight:600}
+
+/* faq */
+.faq-list{max-width:820px;margin:0 auto;display:flex;flex-direction:column;gap:12px}
+.faq-item{border:1px solid var(--border);border-radius:16px;background:#fff;overflow:hidden;
+  transition:box-shadow .3s, border-color .3s}
+.faq-item.open{border-color:var(--teal);box-shadow:0 6px 20px -12px rgba(39,191,211,.2)}
+.faq-q{width:100%;text-align:left;background:none;border:none;cursor:pointer;padding:20px 24px;
+  font-family:var(--display);font-weight:600;font-size:1.04rem;color:var(--navy);display:flex;justify-content:space-between;align-items:center;gap:16px}
+.faq-q .arrow{flex-shrink:0;transition:transform .35s var(--ease-out);color:var(--teal-dark);font-size:1.4rem;line-height:1}
+.faq-item.open .faq-q .arrow{transform:rotate(45deg)}
+.faq-a{max-height:0;overflow:hidden;transition:max-height .4s var(--ease-out)}
+.faq-a p{padding:0 24px 22px;font-size:.97rem}
+
+/* localização */
+.loc-grid{display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:stretch}
+.loc-info{display:flex;flex-direction:column;gap:16px}
+.loc-row{display:flex;gap:14px;align-items:flex-start}
+.loc-row .ic{width:46px;height:46px;border-radius:13px;background:var(--teal-soft);color:var(--teal-dark);display:grid;place-items:center;font-size:1.15rem;flex-shrink:0}
+.loc-row h4{font-size:1rem;margin-bottom:3px;color:var(--navy)}
+.loc-row p{font-size:.95rem;margin:0}
+.hours{width:100%;border-collapse:collapse;font-size:.92rem}
+.hours td{padding:6px 0;border-bottom:1px solid var(--bg-soft)}
+.hours td:last-child{text-align:right;color:var(--navy);font-weight:600}
+.hours tr.closed td:last-child{color:#c0392b}
+.loc-info .btn{margin-top:6px;align-self:flex-start}
+.loc-map{border-radius:var(--radius);overflow:hidden;border:1px solid var(--border);min-height:420px}
+.loc-map iframe{width:100%;height:100%;min-height:420px;border:0}
+
+/* footer */
+footer{background:var(--navy-deep);color:#c2cbe6;padding:64px 0 30px;position:relative;overflow:hidden}
+footer .smile-deco{position:absolute;top:24px;right:40px;width:110px;height:38px;opacity:.4}
+.footer-grid{display:grid;grid-template-columns:1.6fr 1fr 1fr 1fr;gap:36px;margin-bottom:40px;position:relative}
+.footer-logo{display:inline-block;margin-bottom:14px}
+.footer-logo svg{height:44px;width:auto}
+footer .ftxt{font-size:.92rem;color:#8d99c4;max-width:280px}
+footer h4{color:#fff;font-size:1rem;margin-bottom:16px}
+footer ul li{margin-bottom:10px}
+footer ul a{font-size:.92rem;color:#8d99c4;transition:color .15s}
+footer ul a:hover{color:#fff}
+.socials{display:flex;gap:10px;margin-top:6px}
+.socials a{width:40px;height:40px;border-radius:11px;background:rgba(255,255,255,.08);display:grid;place-items:center;color:#fff;transition:background .15s}
+.socials a:hover{background:var(--teal)}
+.socials svg{width:18px;height:18px}
+.footer-bottom{border-top:1px solid rgba(255,255,255,.1);padding-top:24px;display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px;font-size:.84rem;color:#6f7bab}
+footer .btn{margin-top:8px}
+
+/* whatsapp float */
+.wa-float{position:fixed;bottom:24px;right:24px;z-index:90;width:60px;height:60px;border-radius:50%;background:var(--green);
+  color:#fff;display:grid;place-items:center;box-shadow:0 14px 30px -8px rgba(37,211,102,.7);transition:transform .25s var(--ease-out)}
+.wa-float:hover{transform:scale(1.08)}
+.wa-float svg{width:32px;height:32px;fill:#fff}
+.wa-float::after{content:"";position:absolute;inset:0;border-radius:50%;background:var(--green);z-index:-1;animation:pulse 2.4s infinite}
+@keyframes pulse{0%{transform:scale(1);opacity:.5}70%{transform:scale(1.7);opacity:0}100%{opacity:0}}
+
+/* reveal & stagger */
+.el-reveal{opacity:0;transform:translateY(24px);transition:opacity .6s var(--ease-out),transform .6s var(--ease-out)}
+.el-reveal.in{opacity:1;transform:none}
+.stagger-grid{--stagger:80ms}
+.stagger-grid .el-reveal{transition-delay:calc(var(--i,0)*var(--stagger))}
+
+@keyframes countUp{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
+
+@media(max-width:980px){
+  .hero-grid{grid-template-columns:1fr;gap:44px}
+  .hero-visual{max-width:420px;margin:0 auto}
+  .about-grid,.loc-grid{grid-template-columns:1fr;gap:36px}
+  .services-grid{grid-template-columns:repeat(2,1fr)}
+  .diff-grid{grid-template-columns:repeat(3,1fr);gap:30px}
+  .proof-grid{grid-template-columns:repeat(2,1fr);gap:22px}
+  .footer-grid{grid-template-columns:1fr 1fr;gap:30px}
+  .testi-card{flex:0 0 calc(50% - 11px)}
+}
+@media(max-width:760px){
+  :root{--stagger:60ms}
+  .nav-links,.nav-cta{display:none}
+  .hamburger{display:block}
+  .section{padding:72px 0}
+  .hero{padding:124px 0 72px}
+  .cta-inner{padding:50px 26px}
+  .proof-item{justify-content:flex-start}
+  .testi-card{flex:0 0 100%}
+}
+@media(max-width:540px){
+  .services-grid{grid-template-columns:1fr}
+  .diff-grid{grid-template-columns:1fr 1fr;gap:20px}
+  .proof-grid{grid-template-columns:1fr}
+  .footer-grid{grid-template-columns:1fr}
+  .hero-actions .btn{width:100%}
+  .container{padding:0 18px}
+  .hero-floating{left:10px;padding:12px 14px}
+  .section-head h2{font-size:clamp(1.5rem,6vw,1.8rem)}
+}
+@media(max-width:400px){
+  .diff-grid{grid-template-columns:1fr;gap:24px}
+  .hero h1{font-size:clamp(1.6rem,7vw,2rem)}
+  .hero-floating{display:none}
+}
+@media(prefers-reduced-motion:reduce){
+  *{scroll-behavior:auto!important}
+  .el-reveal{opacity:1;transform:none;transition:none}
+  .hero-text{opacity:1;transform:none}
+  .hero-el{animation:none!important;opacity:1!important;transform:none!important}
+  .wa-float::after,.hero-floating{animation:none}
+}
+:focus-visible{outline:3px solid var(--teal);outline-offset:3px;border-radius:6px}
+</style>
+</head>
+<body>
+
+<!-- NAVBAR -->
+<header id="header">
+  <div class="container nav">
+    <a href="#inicio" aria-label="OdontoVip — início">
+      <svg class="logo-img" viewBox="0 0 180 48" fill="none" xmlns="http://www.w3.org/2000/svg" style="height:44px;width:auto">
+        <text x="0" y="32" font-family="'Poppins',sans-serif" font-weight="800" font-size="26" fill="#1B2A66">Odonto<tspan fill="#27BFD3">Vip</tspan></text>
+      </svg>
+    </a>
+    <nav class="nav-links" aria-label="Navegação principal">
+      <a href="#sobre">Sobre</a>
+      <a href="#servicos">Serviços</a>
+      <a href="#diferenciais">Diferenciais</a>
+      <a href="#depoimentos">Depoimentos</a>
+      <a href="#faq">Dúvidas</a>
+      <a href="#localizacao">Localização</a>
+    </nav>
+    <div class="nav-cta">
+      <a href="#" class="btn btn-wa js-wa">Agendar pelo WhatsApp</a>
+    </div>
+    <button class="hamburger" id="hamburger" aria-label="Abrir menu" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</header>
+<div class="mobile-menu" id="mobileMenu">
+  <a href="#sobre">Sobre</a>
+  <a href="#servicos">Serviços</a>
+  <a href="#diferenciais">Diferenciais</a>
+  <a href="#depoimentos">Depoimentos</a>
+  <a href="#faq">Dúvidas</a>
+  <a href="#localizacao">Localização</a>
+  <a href="tel:+557734222103" class="btn btn-ghost">(77) 3422-2103</a>
+  <a href="#" class="btn btn-wa js-wa">Agendar pelo WhatsApp</a>
+</div>
+
+<!-- HERO -->
+<section class="hero" id="inicio">
+  <span class="hero-blob a"></span><span class="hero-blob b"></span>
+  <div class="container hero-grid">
+    <div class="hero-text" id="heroText">
+      <span class="hero-el hero-label" style="animation-delay:0ms">
+        <svg viewBox="0 0 24 24"><path d="M9 12l2 2 4-4"/></svg>
+        Atendimento odontológico completo
+      </span>
+      <h1 class="hero-el" style="animation-delay:100ms">Seu sorriso merece <span class="teal-text">cuidado completo</span> em um só lugar</h1>
+      <p class="lead hero-el" style="animation-delay:180ms">Atendimento odontológico para toda a família, com tecnologia, conforto e uma equipe preparada para cuidar da sua saúde bucal em todas as etapas.</p>
+      <p class="sub hero-el" style="animation-delay:240ms">Agende sua avaliação e tire suas dúvidas pelo WhatsApp.</p>
+
+      <div class="rating-badge hero-el" style="animation-delay:300ms">
+        <span class="num"><span id="ratingNum">4,9</span></span>
+        <span>
+          <span class="stars">★★★★★</span><br>
+          <span class="lbl"><b>405 avaliações</b> no Google</span>
+        </span>
+      </div>
+
+      <div class="hero-actions hero-el" style="animation-delay:360ms">
+        <a href="#" class="btn btn-wa js-wa">Agendar pelo WhatsApp</a>
+        <a href="#servicos" class="btn btn-ghost">Conhecer os serviços</a>
+      </div>
+      <ul class="mini-cards hero-el" style="animation-delay:420ms">
+        <li><span class="check">✓</span> Atendimento humanizado</li>
+        <li><span class="check">✓</span> Equipe qualificada</li>
+        <li><span class="check">✓</span> Fácil agendamento</li>
+      </ul>
+    </div>
+
+    <div class="hero-visual hero-el" style="animation-delay:300ms">
+      <div class="hero-photo">
+        <img src="assets/hero_dentist.png" alt="Dentista da OdontoVip sorrindo em um consultório moderno" loading="eager">
+      </div>
+      <div class="hero-floating">
+        <span class="ic" aria-hidden="true">
+          <svg viewBox="0 0 24 24"><path d="M.057 24l1.687-6.163a11.867 11.867 0 01-1.587-5.946C.16 5.335 5.495 0 12.05 0a11.821 11.821 0 018.413 3.488 11.824 11.824 0 013.48 8.414c-.003 6.557-5.338 11.892-11.893 11.892a11.9 11.9 0 01-5.688-1.448L.057 24z"/></svg>
+        </span>
+        <div><strong>Resposta rápida</strong><span>Agende direto pelo WhatsApp</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROVA SOCIAL -->
+<section class="proof">
+  <svg class="smile smile-deco" viewBox="0 0 120 42" aria-hidden="true"><path d="M6 10 Q60 44 114 10" stroke="#27BFD3" stroke-width="7"/></svg>
+  <div class="container proof-grid">
+    <div class="proof-item">
+      <svg class="pic" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2l3 7 7 .5-5.5 5 1.5 7.5L12 18l-6 4 1.5-7.5L2 9.5 9 9z"/></svg>
+      <p><b>4,9 de 5</b> <span>· 405 avaliações no Google</span></p>
+    </div>
+    <div class="proof-item">
+      <svg class="pic" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21v-6M8 21v-6M16 21v-6M4 12l8-8 8 8"/><path d="M6 12v5h12v-5"/></svg>
+      <p>Atendimento para <span>toda a família</span></p>
+    </div>
+    <div class="proof-item">
+      <svg class="pic" viewBox="0 0 24 24" aria-hidden="true"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+      <p>Centro de <span>Vitória da Conquista</span></p>
+    </div>
+    <div class="proof-item">
+      <svg class="pic" viewBox="0 0 24 24" aria-hidden="true"><path d="M22 16.9v3a2 2 0 01-2.2 2A19.5 19.5 0 012 4.2 2 2 0 014 2h3a2 2 0 012 1.7c.3 1.2.8 2.3 1.4 3.3a2 2 0 01-.4 2.2L8.6 10a15 15 0 005.6 5.6l1.4-1.4a2 2 0 012.2-.4c1 .6 2.1 1.1 3.3 1.4A2 2 0 0122 16.9z"/></svg>
+      <p>Agendamento rápido <span>pelo WhatsApp</span></p>
+    </div>
+  </div>
+</section>
+
+<!-- SOBRE -->
+<section class="section about" id="sobre">
+  <div class="container about-grid">
+    <div class="about-photo el-reveal">
+      <img src="assets/about_clinic.png" alt="Recepção moderna e aconchegante da OdontoVip" loading="lazy">
+    </div>
+    <div class="el-reveal" style="transition-delay:120ms">
+      <span class="section-head" style="margin-bottom:0">
+        <span class="deco"><span class="deco-line"></span><span>Sobre</span></span>
+        <h2 style="margin-top:14px">Cuidando da sua saúde bucal com atenção e responsabilidade</h2>
+      </span>
+      <p style="margin-bottom:14px">Nossa clínica oferece atendimento odontológico completo, buscando unir conhecimento técnico, atendimento humanizado e soluções adequadas para cada paciente.</p>
+      <p>Entendemos que cada sorriso possui necessidades diferentes. Por isso, realizamos uma avaliação individual para orientar o tratamento mais indicado para você.</p>
+      <div class="about-cards">
+        <div class="card"><h4>Missão</h4><p>Oferecer cuidado odontológico responsável e acolhedor.</p></div>
+        <div class="card"><h4>Visão</h4><p>Ser referência em atendimento humanizado na região.</p></div>
+        <div class="card"><h4>Valores</h4><p>Ética, transparência e respeito a cada paciente.</p></div>
+      </div>
+      <a href="#" class="btn btn-navy js-wa">Agendar pelo WhatsApp</a>
+    </div>
+  </div>
+</section>
+
+<!-- SERVIÇOS -->
+<section class="section services" id="servicos">
+  <div class="container">
+    <div class="section-head center el-reveal">
+      <span class="deco" style="justify-content:center">
+        <span class="deco-line"></span><span>Serviços</span><span class="deco-line"></span>
+      </span>
+      <h2>Tratamentos para diferentes necessidades</h2>
+      <p>Atendemos diversas áreas da odontologia, sempre com avaliação individual antes de indicar qualquer procedimento.</p>
+    </div>
+    <div class="services-grid stagger-grid" id="servicesGrid"></div>
+  </div>
+</section>
+
+<!-- DIFERENCIAIS -->
+<section class="section" id="diferenciais">
+  <div class="container">
+    <div class="section-head center el-reveal">
+      <span class="deco" style="justify-content:center">
+        <span class="deco-line"></span><span>Diferenciais</span><span class="deco-line"></span>
+      </span>
+      <h2>Por que escolher a OdontoVip?</h2>
+    </div>
+    <div class="diff-grid stagger-grid" id="diffGrid"></div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta-band">
+  <div class="container">
+    <div class="cta-inner el-reveal">
+      <svg class="smile smile-deco tl" viewBox="0 0 120 42" aria-hidden="true"><path d="M6 10 Q60 44 114 10" stroke="#fff" stroke-width="7"/></svg>
+      <svg class="smile smile-deco br" viewBox="0 0 120 42" aria-hidden="true"><path d="M6 10 Q60 44 114 10" stroke="#fff" stroke-width="7"/></svg>
+      <h2>Está procurando uma clínica odontológica para cuidar do seu sorriso?</h2>
+      <p>Entre em contato pelo WhatsApp, esclareça suas dúvidas e agende uma avaliação.</p>
+      <a href="#" class="btn btn-wa js-wa">Falar com a clínica pelo WhatsApp</a>
+    </div>
+  </div>
+</section>
+
+<!-- DEPOIMENTOS -->
+<section class="section testi" id="depoimentos">
+  <div class="container">
+    <div class="section-head center el-reveal">
+      <span class="deco" style="justify-content:center">
+        <span class="deco-line"></span><span>Depoimentos</span><span class="deco-line"></span>
+      </span>
+      <h2>O que os pacientes dizem</h2>
+    </div>
+    <div class="testi-scroll stagger-grid" id="testiTrack"></div>
+    <div class="testi-nav">
+      <button id="testiPrev" aria-label="Anterior">‹</button>
+      <button id="testiNext" aria-label="Próximo">›</button>
+    </div>
+    <p class="testi-source">Avaliações reais publicadas no <a href="https://share.google/3SZvLCEjcOjQixlUL" target="_blank" rel="noopener">Google</a>.</p>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="section services" id="faq">
+  <div class="container">
+    <div class="section-head center el-reveal">
+      <span class="deco" style="justify-content:center">
+        <span class="deco-line"></span><span>Dúvidas frequentes</span><span class="deco-line"></span>
+      </span>
+      <h2>Perguntas que recebemos com frequência</h2>
+    </div>
+    <div class="faq-list" id="faqList"></div>
+  </div>
+</section>
+
+<!-- LOCALIZAÇÃO -->
+<section class="section" id="localizacao">
+  <div class="container">
+    <div class="section-head el-reveal">
+      <span class="deco"><span class="deco-line"></span><span>Localização</span></span>
+      <h2>Onde nos encontrar</h2>
+    </div>
+    <div class="loc-grid">
+      <div class="loc-info el-reveal">
+        <div class="loc-row"><span class="ic">📍</span><div><h4>Endereço</h4><p>Av. Lauro de Freitas, 178 — 1º Andar, Centro<br>Vitória da Conquista — BA, 45000-230</p></div></div>
+        <div class="loc-row"><span class="ic">📞</span><div><h4>Telefone</h4><p><a href="tel:+557734222103">(77) 3422-2103</a></p></div></div>
+        <div class="loc-row"><span class="ic">🕒</span><div style="flex:1"><h4>Horário de atendimento</h4>
+          <table class="hours"><tbody>
+            <tr><td>Segunda a sexta</td><td>07:30 – 18:30</td></tr>
+            <tr><td>Sábado</td><td>07:30 – 13:00</td></tr>
+            <tr class="closed"><td>Domingo</td><td>Fechado</td></tr>
+          </tbody></table>
+        </div></div>
+        <a href="https://maps.app.goo.gl/6w7mHpYMurGjqzog8" target="_blank" rel="noopener" class="btn btn-navy">Abrir no Google Maps</a>
+      </div>
+      <div class="loc-map el-reveal" style="transition-delay:120ms">
+        <iframe title="Mapa OdontoVip" loading="lazy" referrerpolicy="no-referrer-when-downgrade"
+          src="https://www.google.com/maps?q=Av.%20Lauro%20de%20Freitas%2C%20178%2C%20Vit%C3%B3ria%20da%20Conquista%20-%20BA&output=embed"></iframe>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <svg class="smile smile-deco" viewBox="0 0 120 42" aria-hidden="true"><path d="M6 10 Q60 44 114 10" stroke="#27BFD3" stroke-width="7"/></svg>
+  <div class="container">
+    <div class="footer-grid">
+      <div>
+        <span class="footer-logo">
+          <svg class="logo-img" viewBox="0 0 180 48" fill="none" xmlns="http://www.w3.org/2000/svg" style="height:44px;width:auto">
+            <text x="0" y="32" font-family="'Poppins',sans-serif" font-weight="800" font-size="26" fill="#FFFFFF">Odonto<tspan fill="#27BFD3">Vip</tspan></text>
+          </svg>
+        </span>
+        <p class="ftxt">Atendimento odontológico completo para toda a família em Vitória da Conquista, com foco em cuidado, ética e responsabilidade.</p>
+        <a href="#" class="btn btn-wa js-wa">Agendar pelo WhatsApp</a>
+      </div>
+      <div>
+        <h4>Navegação</h4>
+        <ul>
+          <li><a href="#sobre">Sobre</a></li>
+          <li><a href="#servicos">Serviços</a></li>
+          <li><a href="#diferenciais">Diferenciais</a></li>
+          <li><a href="#depoimentos">Depoimentos</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Atendimento</h4>
+        <ul>
+          <li><a href="#faq">Dúvidas frequentes</a></li>
+          <li><a href="#localizacao">Localização</a></li>
+          <li><a href="tel:+557734222103">(77) 3422-2103</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Redes sociais</h4>
+        <div class="socials">
+          <a href="#" aria-label="Instagram"><svg viewBox="0 0 24 24" fill="none"><rect x="3" y="3" width="18" height="18" rx="5" stroke="currentColor" stroke-width="1.6"/><circle cx="12" cy="12" r="4" stroke="currentColor" stroke-width="1.6"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor"/></svg></a>
+          <a href="#" aria-label="Facebook"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M14 9h3V6h-3c-2 0-3 1.3-3 3.3V11H9v3h2v7h3v-7h2.5l.5-3H14V9.7c0-.5.2-.7.8-.7Z"/></svg></a>
+          <a href="#" class="js-wa" aria-label="WhatsApp"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M.057 24l1.687-6.163a11.867 11.867 0 01-1.587-5.946C.16 5.335 5.495 0 12.05 0a11.821 11.821 0 018.413 3.488 11.824 11.824 0 013.48 8.414c-.003 6.557-5.338 11.892-11.893 11.892a11.9 11.9 0 01-5.688-1.448L.057 24z"/></svg></a>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© <span id="year"></span> OdontoVip Dentistas. Todos os direitos reservados.</span>
+      <span>Responsável Técnico: Dra. Caroline Silva — CRO-BA 12345</span>
+    </div>
+  </div>
+</footer>
+
+<a href="#" class="wa-float js-wa" aria-label="Falar pelo WhatsApp">
+  <svg viewBox="0 0 24 24" fill="currentColor"><path d="M.057 24l1.687-6.163a11.867 11.867 0 01-1.587-5.946C.16 5.335 5.495 0 12.05 0a11.821 11.821 0 018.413 3.488 11.824 11.824 0 013.48 8.414c-.003 6.557-5.338 11.892-11.893 11.892a11.9 11.9 0 01-5.688-1.448L.057 24z"/></svg>
+</a>
+
+<script>
+/* =========================================================
+   ⚙️ CONFIGURAÇÃO
+   ========================================================= */
+const WHATSAPP_NUMERO = "557734222103";
+const WHATSAPP_MSG = "Olá, OdontoVip! Vim pelo site e gostaria de agendar uma avaliação.";
+
+(function(){
+  const link = `https://wa.me/${WHATSAPP_NUMERO}?text=${encodeURIComponent(WHATSAPP_MSG)}`;
+  document.querySelectorAll('.js-wa').forEach(el=>{
+    el.setAttribute('href', link); el.setAttribute('target','_blank'); el.setAttribute('rel','noopener');
+  });
+})();
+
+/* SVG ICONS — serviços */
+const SVC_ICONS = [
+  `<svg viewBox="0 0 24 24"><path d="M4 6h16M4 12h16M4 18h16"/></svg>`,
+  `<svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M8 14q4 3 8 0"/></svg>`,
+  `<svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="8"/><circle cx="9" cy="12" r="1.5"/><circle cx="15" cy="12" r="1.5"/></svg>`,
+  `<svg viewBox="0 0 24 24"><path d="M12 4q-6 8 0 18q6-10 0-18z"/></svg>`,
+  `<svg viewBox="0 0 24 24"><path d="M8 5q4-4 8 0v12H8z"/><path d="M12 3v14"/></svg>`,
+  `<svg viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></svg>`,
+  `<svg viewBox="0 0 24 24"><path d="M12 2l1.5 4.5L18 8l-4.5 1.5L12 14l-1.5-4.5L6 8l4.5-1.5z"/></svg>`,
+  `<svg viewBox="0 0 24 24"><path d="M12 4v12M8 12l4 4 4-4"/></svg>`,
+  `<svg viewBox="0 0 24 24"><path d="M8 5q4-4 8 0v10H8z"/><path d="M12 5v8"/></svg>`,
+  `<svg viewBox="0 0 24 24"><rect x="6" y="9" width="12" height="9" rx="2"/><path d="M6 9l2-2h8l2 2"/></svg>`,
+  `<svg viewBox="0 0 24 24"><path d="M4 16V8q2-3 4 0q2-3 4 0v8z"/><path d="M4 16h8"/></svg>`,
+  `<svg viewBox="0 0 24 24"><rect x="4" y="3" width="16" height="18" rx="2"/><circle cx="12" cy="12" r="3"/></svg>`,
+  `<svg viewBox="0 0 24 24"><path d="M8 5q4-4 8 0v8H8z"/><path d="M10 10h4"/></svg>`,
+];
+
+/* SERVIÇOS */
+const SERVICOS = [
+  ["Aparelhos Ortodônticos","Correção do posicionamento dos dentes e alinhamento do sorriso."],
+  ["Atendimento Infantil","Acompanhamento odontológico pensado para crianças, com cuidado e acolhimento."],
+  ["Bichectomia","Procedimento realizado mediante avaliação profissional e indicação clínica."],
+  ["Botox","Aplicação para fins funcionais ou estéticos, conforme avaliação individual."],
+  ["Tratamento de Canal","Indicado para preservar dentes comprometidos quando necessário."],
+  ["Cirurgias Odontológicas","Procedimentos realizados com planejamento e acompanhamento especializado."],
+  ["Clareamento Dental","Alternativas para melhorar a estética do sorriso com segurança."],
+  ["Extrações","Remoção dentária quando indicada pelo profissional."],
+  ["Implantes Dentários","Reposição de dentes perdidos e recuperação da função mastigatória."],
+  ["Limpeza Preventiva","Cuidados periódicos para auxiliar na manutenção da saúde bucal."],
+  ["Próteses Dentárias","Reabilitação oral personalizada conforme cada caso."],
+  ["Raio-X Odontológico","Exames auxiliares para um diagnóstico mais preciso."],
+  ["Restaurações","Recuperação da estrutura dentária comprometida por cáries ou fraturas."],
+];
+document.getElementById('servicesGrid').innerHTML = SERVICOS.map((s,i)=>`
+  <article class="service-card el-reveal" style="--i:${i}"><div class="ic" aria-hidden="true">${SVC_ICONS[i]}</div><h3>${s[0]}</h3><p>${s[1]}</p></article>`).join('');
+
+/* DIFERENCIAIS */
+const DIF_ICONS = [
+  `<svg viewBox="0 0 24 24"><path d="M12 21l-1.5-1.4C5.4 15.4 3 13.2 3 10.5 3 8 5 6 7.5 6c1.4 0 2.7.7 3.5 1.8C11.8 6.7 13.1 6 14.5 6 17 6 19 8 19 10.5c0 2.7-2.4 4.9-7.5 9.1z"/></svg>`,
+  `<svg viewBox="0 0 24 24"><rect x="6" y="10" width="12" height="10"/><path d="M10 10V5l4-3v8"/></svg>`,
+  `<svg viewBox="0 0 24 24"><circle cx="12" cy="6" r="4"/><path d="M12 10v6l4 4M8 20h8"/></svg>`,
+  `<svg viewBox="0 0 24 24"><circle cx="9" cy="8" r="3"/><circle cx="15" cy="8" r="3"/><path d="M3 20v-3c0-2 2-4 6-4M21 20v-3c0-2-2-4-6-4"/></svg>`,
+  `<svg viewBox="0 0 24 24"><path d="M22 16.9v3a2 2 0 01-2.2 2A19.5 19.5 0 012 4.2 2 2 0 014 2h3a2 2 0 012 1.7c.3 1.2.8 2.3 1.4 3.3a2 2 0 01-.4 2.2L8.6 10a15 15 0 005.6 5.6l1.4-1.4a2 2 0 012.2-.4c1 .6 2.1 1.1 3.3 1.4A2 2 0 0122 16.9z"/></svg>`,
+];
+const DIFERENCIAIS = [
+  ["Atendimento humanizado","Um ambiente acolhedor e respeitoso para todos os pacientes."],
+  ["Estrutura completa","Diversos tratamentos disponíveis em um único local."],
+  ["Tecnologia de apoio","Recursos que auxiliam no planejamento e acompanhamento dos tratamentos."],
+  ["Equipe preparada","Profissionais comprometidos em orientar cada paciente com clareza."],
+  ["Facilidade de contato","Agendamento rápido e atendimento pelo WhatsApp."],
+];
+document.getElementById('diffGrid').innerHTML = DIFERENCIAIS.map((d,i)=>`
+  <div class="diff-item el-reveal" style="--i:${i}"><div class="medal" aria-hidden="true">${DIF_ICONS[i]}</div><h3>${d[0]}</h3><p>${d[1]}</p></div>`).join('');
+
+/* DEPOIMENTOS */
+const DEPOIMENTOS = [
+  ["Evellin Santos","Profissionais incríveis, cuidado com o paciente desde a recepção. Em especial Dr. Yuri e Dr. Matheus, profissionais maravilhosos. Extremamente satisfeita!"],
+  ["Eugenia Rocha","Sou paciente da OdontoVip há algum tempo. Atendimento humanizado com serviços de ótima qualidade, profissionais muito capacitados e horários bem flexíveis. Super indico!"],
+  ["Adriele Santana","Atendimento maravilhoso e lugar aconchegante. Melhor clínica de Vitória da Conquista."],
+  ["Diana Lima","Sempre bom ser atendida pela OdontoVip, em especial pela Dra. Caroline. É de uma paciência que me deixa à vontade e me faz esquecer meu pavor de dentista!"],
+  ["Flávia Lima","Atendimento excelente. Fiz uma extração e o pós foi simplesmente indolor. Todos muito solícitos. Recomendo."],
+  ["Gabriela Alves","O atendimento é ótimo, sempre sou muito bem atendida e o tempo de espera é bem curtinho."],
+  ["Renata Ribeiro","A clínica é muito boa. Além de bons profissionais, ainda oferecem garantia nos serviços prestados."],
+  ["Maria Eduarda Santos","Atendimento com qualidade, excelente conduta profissional, ambiente acolhedor e tranquilo, pessoas empáticas."],
+  ["Cida Lopes","A OdontoVip é diferenciada, ótimo atendimento em todos os aspectos, e nos passa uma confiança imensa."],
+];
+document.getElementById('testiTrack').innerHTML = DEPOIMENTOS.map((d,i)=>`
+  <div class="testi-card el-reveal" style="--i:${i}">
+    <div class="stars">★★★★★</div>
+    <p>“${d[1]}”</p>
+    <div class="who"><span class="av">${d[0].charAt(0)}</span><span><b>${d[0]}</b><span>Avaliação no Google</span></span></div>
+  </div>`).join('');
+
+/* navegação dos depoimentos (scroll suave) */
+(function(){
+  const track = document.getElementById('testiTrack');
+  if(!track) return;
+  function step(){
+    const card=track.querySelector('.testi-card');
+    return card ? card.offsetWidth + 22 : 300;
+  }
+  function next(){
+    const s=step(), max=track.scrollWidth-track.clientWidth;
+    const target=track.scrollLeft+s;
+    track.scrollTo({left:target>=max-4?0:target,behavior:'smooth'});
+  }
+  function prev(){
+    const s=step(), max=track.scrollWidth-track.clientWidth;
+    const target=track.scrollLeft-s;
+    track.scrollTo({left:target<=4?max:target,behavior:'smooth'});
+  }
+  document.getElementById('testiNext').addEventListener('click',next);
+  document.getElementById('testiPrev').addEventListener('click',prev);
+  let timer = setInterval(next, 5000);
+  document.querySelectorAll('.testi-nav button').forEach(b=>{
+    b.addEventListener('click',()=>{clearInterval(timer);timer=setInterval(next,5000);});
+  });
+})();
+
+/* FAQ */
+const FAQ = [
+  ["Quais tratamentos a clínica oferece?","Trabalhamos com diversas áreas da odontologia, incluindo ortodontia, implantes, clareamento, canal, restaurações, limpeza, próteses, atendimento infantil e outros procedimentos."],
+  ["Como faço para agendar uma consulta?","Você pode entrar em contato diretamente pelo WhatsApp ou pelo telefone (77) 3422-2103 e escolher o melhor horário disponível."],
+  ["A clínica atende crianças?","Sim. Contamos com atendimento voltado ao público infantil, buscando proporcionar uma experiência tranquila e acolhedora."],
+  ["É possível fazer uma avaliação antes de iniciar o tratamento?","Sim. A avaliação permite entender suas necessidades e indicar as opções mais adequadas para o seu caso."],
+  ["A clínica realiza implantes dentários?","Sim. O procedimento é realizado após análise clínica e planejamento individualizado."],
+  ["Onde a clínica está localizada?","Estamos na Av. Lauro de Freitas, 178 — 1º Andar, Centro, Vitória da Conquista — BA. Veja o mapa na seção de localização."],
+];
+document.getElementById('faqList').innerHTML = FAQ.map((f,i)=>`
+  <div class="faq-item el-reveal" style="--i:${i}">
+    <button class="faq-q" aria-expanded="false" aria-controls="faq-a-${i}"><span>${f[0]}</span><span class="arrow" aria-hidden="true">+</span></button>
+    <div class="faq-a" id="faq-a-${i}" role="region"><p>${f[1]}</p></div>
+  </div>`).join('');
+document.querySelectorAll('.faq-q').forEach(btn=>{
+  btn.addEventListener('click',()=>{
+    const item=btn.parentElement, ans=item.querySelector('.faq-a');
+    const open=item.classList.toggle('open');
+    btn.setAttribute('aria-expanded',open);
+    ans.style.maxHeight = open ? ans.scrollHeight+'px' : null;
+  });
+});
+
+/* navbar + menu */
+const header=document.getElementById('header');
+window.addEventListener('scroll',()=>header.classList.toggle('scrolled',window.scrollY>10),{passive:true});
+const ham=document.getElementById('hamburger'), menu=document.getElementById('mobileMenu');
+ham.addEventListener('click',()=>{const o=menu.classList.toggle('open');ham.classList.toggle('open',o);ham.setAttribute('aria-expanded',o);});
+menu.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>{menu.classList.remove('open');ham.classList.remove('open');ham.setAttribute('aria-expanded',false);}));
+
+/* stagger reveal */
+const observer=new IntersectionObserver((es)=>{es.forEach(e=>{
+  if(e.isIntersecting){
+    const items=e.target.querySelectorAll('.el-reveal');
+    items.forEach((el,i)=>{el.style.setProperty('--i',i);el.classList.add('in');});
+    observer.unobserve(e.target);
+  }
+})},{threshold:.08});
+document.querySelectorAll('.stagger-grid').forEach(el=>observer.observe(el));
+
+/* individual reveal (fallback for non-stagger) */
+const singleObserver=new IntersectionObserver((es)=>{es.forEach(e=>{
+  if(e.isIntersecting){e.target.classList.add('in');singleObserver.unobserve(e.target);}
+})},{threshold:.1});
+document.querySelectorAll('.el-reveal:not(.stagger-grid .el-reveal)').forEach(el=>singleObserver.observe(el));
+
+/* hero entrance */
+setTimeout(()=>{document.getElementById('heroText').classList.add('visible');},100);
+
+/* rating counter */
+(function(){
+  const el=document.getElementById('ratingNum');
+  if(!el)return;
+  const target=parseFloat(el.textContent.replace(',','.'));
+  let current=0,start=null;
+  const dur=1200;
+  function tick(ts){
+    if(!start)start=ts;
+    const p=Math.min((ts-start)/dur,1);
+    const ease=1-Math.pow(1-p,3);
+    current=ease*target;
+    el.textContent=current.toFixed(1).replace('.',',');
+    if(p<1)requestAnimationFrame(tick);
+  }
+  const io=new IntersectionObserver((es)=>{
+    es.forEach(e=>{if(e.isIntersecting){start=null;requestAnimationFrame(tick);io.unobserve(e.target);}});
+  },{threshold:.5});
+  io.observe(el.closest('.rating-badge'));
+})();
+
+document.getElementById('year').textContent=new Date().getFullYear();
+</script>
+</body>
+</html>
