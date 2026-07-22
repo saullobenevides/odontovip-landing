@@ -74,16 +74,30 @@ header.scrolled{border-color:var(--border);box-shadow:0 10px 30px -15px rgba(27,
 .nav-links a:hover::after{width:100%}
 .nav-cta{display:flex;align-items:center;gap:12px}
 .nav-cta .btn{padding:11px 18px;font-size:.92rem}
-.hamburger{display:none;background:none;border:none;cursor:pointer;width:44px;height:44px;border-radius:11px;padding:0}
-.hamburger span{display:block;width:22px;height:2px;background:var(--navy);margin:5px auto;border-radius:2px;transition:transform .3s var(--ease-in-out),opacity .2s}
+.hamburger{display:none;background:none;border:none;cursor:pointer;width:44px;height:44px;border-radius:11px;padding:0;position:relative;z-index:102}
+.hamburger span{display:block;width:22px;height:2px;background:var(--navy);margin:5px auto;border-radius:2px;transition:transform .35s var(--ease-in-out),opacity .25s}
 .hamburger.open span:nth-child(1){transform:translateY(7px) rotate(45deg)}
 .hamburger.open span:nth-child(2){opacity:0}
 .hamburger.open span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
-.mobile-menu{position:fixed;inset:78px 0 auto 0;background:#fff;border-bottom:1px solid var(--border);
-  transform:translateY(-140%);transition:transform .4s var(--ease-out);z-index:99;padding:18px 24px 28px}
+.mobile-overlay{position:fixed;inset:0;background:rgba(18,30,77,.45);z-index:98;opacity:0;pointer-events:none;transition:opacity .35s ease}
+.mobile-overlay.open{opacity:1;pointer-events:auto}
+.mobile-menu{position:fixed;top:78px;left:0;right:0;background:#fff;border-bottom:1px solid var(--border);
+  transform:translateY(-110%);transition:transform .4s var(--ease-out);z-index:99;padding:16px 24px 24px;
+  box-shadow:0 24px 48px -24px rgba(18,30,77,.3)}
 .mobile-menu.open{transform:translateY(0)}
-.mobile-menu a{display:block;padding:13px 4px;font-weight:500;border-bottom:1px solid var(--bg-soft);color:var(--text);-webkit-tap-highlight-color:transparent}
-.mobile-menu .btn{width:100%;margin-top:16px}
+.mobile-menu a{display:block;padding:14px 4px;font-weight:500;color:var(--text);-webkit-tap-highlight-color:transparent;
+  opacity:0;transform:translateY(-8px);transition:opacity .35s ease,transform .35s ease,border-color .2s}
+.mobile-menu.open a{opacity:1;transform:none}
+.mobile-menu.open a:nth-child(1){transition-delay:.06s}
+.mobile-menu.open a:nth-child(2){transition-delay:.10s}
+.mobile-menu.open a:nth-child(3){transition-delay:.14s}
+.mobile-menu.open a:nth-child(4){transition-delay:.18s}
+.mobile-menu.open a:nth-child(5){transition-delay:.22s}
+.mobile-menu.open a:nth-child(6){transition-delay:.26s}
+.mobile-menu.open a:nth-child(7){transition-delay:.30s}
+.mobile-menu.open a:nth-child(8){transition-delay:.34s}
+.mobile-menu a:not(:last-of-type){border-bottom:1px solid var(--bg-soft)}
+.mobile-menu .btn{width:100%;margin-top:12px}
 
 /* hero */
 .hero{position:relative;padding:150px 0 96px;overflow:hidden;
@@ -285,21 +299,15 @@ footer .btn{margin-top:8px}
   .hamburger{display:block}
   .section{padding:64px 0}
   .hero{padding:124px 0 64px}
+  .proof{display:none}
   .cta-inner{padding:48px 26px;border-radius:20px}
   .cta-inner .smile-deco{display:none}
   .cta-inner .btn{width:100%}
-  .proof-grid{flex-wrap:nowrap;gap:16px;overflow-x:auto;-webkit-overflow-scrolling:touch;scrollbar-width:none;-ms-overflow-style:none;justify-content:flex-start;padding:24px 0}
-  .proof-grid::-webkit-scrollbar{display:none}
-  .proof-item{flex:0 0 auto}
-  .proof-item p{font-size:.9rem}
   .testi-card{flex:0 0 100%}
 }
 @media(max-width:540px){
   .services-grid{grid-template-columns:1fr}
   .diff-grid{grid-template-columns:1fr 1fr;gap:16px}
-  .proof-grid{gap:14px;padding:20px 0}
-  .proof-item .pic{width:24px;height:24px}
-  .proof-item p{font-size:.85rem}
   .footer-grid{grid-template-columns:1fr}
   .hero-actions .btn{width:100%}
   .container{padding:0 18px}
@@ -312,7 +320,6 @@ footer .btn{margin-top:8px}
 }
 @media(max-width:400px){
   .diff-grid{grid-template-columns:1fr;gap:20px}
-  .proof-grid{gap:12px}
   .hero h1{font-size:clamp(1.5rem,7vw,1.9rem)}
   .hero-floating{display:none}
   .cta-inner{padding:32px 18px}
@@ -353,6 +360,7 @@ footer .btn{margin-top:8px}
     </button>
   </div>
 </header>
+<div class="mobile-overlay" id="mobileOverlay"></div>
 <div class="mobile-menu" id="mobileMenu">
   <a href="#sobre">Sobre</a>
   <a href="#servicos">Serviços</a>
@@ -745,9 +753,11 @@ document.querySelectorAll('.faq-q').forEach(btn=>{
 /* navbar + menu */
 const header=document.getElementById('header');
 window.addEventListener('scroll',()=>header.classList.toggle('scrolled',window.scrollY>10),{passive:true});
-const ham=document.getElementById('hamburger'), menu=document.getElementById('mobileMenu');
-ham.addEventListener('click',()=>{const o=menu.classList.toggle('open');ham.classList.toggle('open',o);ham.setAttribute('aria-expanded',o);});
-menu.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>{menu.classList.remove('open');ham.classList.remove('open');ham.setAttribute('aria-expanded',false);}));
+const ham=document.getElementById('hamburger'), menu=document.getElementById('mobileMenu'), overlay=document.getElementById('mobileOverlay');
+function toggleMenu(o){menu.classList.toggle('open',o);overlay.classList.toggle('open',o);ham.classList.toggle('open',o);ham.setAttribute('aria-expanded',o);}
+ham.addEventListener('click',()=>toggleMenu(!menu.classList.contains('open')));
+overlay.addEventListener('click',()=>toggleMenu(false));
+menu.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>toggleMenu(false)));
 
 /* stagger reveal */
 const observer=new IntersectionObserver((es)=>{es.forEach(e=>{
