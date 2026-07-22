@@ -670,13 +670,14 @@ footer .btn{margin-top:8px}
 const WHATSAPP_NUMERO = "557734222103";
 const WHATSAPP_MSG = "Olá, OdontoVip! Vim pelo site e gostaria de agendar uma avaliação.";
 
-(function(){
+function setWaLinks(){
   document.querySelectorAll('.js-wa').forEach(el=>{
     const msg = el.getAttribute('data-wa-msg') || WHATSAPP_MSG;
     const link = `https://wa.me/${WHATSAPP_NUMERO}?text=${encodeURIComponent(msg)}`;
     el.setAttribute('href', link); el.setAttribute('target','_blank'); el.setAttribute('rel','noopener');
   });
-})();
+}
+setWaLinks();
 
 /* SVG ICONS — serviços */
 const SVC_ICONS = [
@@ -720,6 +721,7 @@ document.querySelectorAll('.service-card').forEach((card,i)=>{
   btn.setAttribute('data-wa-msg', `Olá, OdontoVip! Vi o serviço de ${SERVICOS[i][0]} no site e gostaria de saber mais.`);
   card.appendChild(btn);
 });
+setWaLinks();
 
 /* DIFERENCIAIS */
 const DIF_ICONS = [
