@@ -133,11 +133,11 @@ header.scrolled{border-color:var(--border);box-shadow:0 10px 30px -15px rgba(27,
 /* proof strip */
 .proof{background:var(--navy);position:relative;overflow:hidden}
 .proof .smile-deco{position:absolute;right:30px;top:-10px;width:100px;height:36px;opacity:.5}
-.proof-grid{position:relative;display:grid;grid-template-columns:repeat(4,1fr);gap:14px;padding:30px 0}
-.proof-item{display:flex;align-items:center;gap:12px;justify-content:center}
-.proof-item .pic{width:28px;height:28px;flex-shrink:0;stroke:#9fb4e8;fill:none;stroke-width:2;stroke-linecap:round}
-.proof-item p{font-size:.92rem;font-weight:500;color:#fff;line-height:1.4}
-.proof-item p span{color:#9fb4e8}
+.proof-grid{position:relative;display:grid;grid-template-columns:repeat(4,1fr);gap:24px;padding:28px 0}
+.proof-item{display:flex;align-items:center;gap:14px;justify-content:center}
+.proof-item .pic{width:30px;height:30px;flex-shrink:0;stroke:#9fb4e8;fill:none;stroke-width:2;stroke-linecap:round}
+.proof-item p{font-size:.95rem;font-weight:500;color:#fff;line-height:1.35}
+.proof-item p span{color:#9fb4e8;display:block;font-size:.82rem;margin-top:1px}
 
 /* sobre */
 .about-grid{display:grid;grid-template-columns:.92fr 1.08fr;gap:54px;align-items:center}
@@ -178,14 +178,15 @@ header.scrolled{border-color:var(--border);box-shadow:0 10px 30px -15px rgba(27,
 
 /* CTA */
 .cta-band{padding:0 0 96px}
-.cta-inner{position:relative;overflow:hidden;border-radius:var(--radius-lg);text-align:center;color:#fff;padding:66px 56px;
-  background:linear-gradient(125deg,var(--navy-deep),var(--navy) 48%,var(--teal))}
-.cta-inner .smile-deco{position:absolute;width:120px;height:42px;opacity:.5}
-.cta-inner .smile-deco.tl{top:26px;left:30px}
-.cta-inner .smile-deco.br{bottom:26px;right:30px;transform:rotate(180deg)}
-.cta-inner h2{color:#fff;font-size:clamp(1.6rem,3.4vw,2.3rem);max-width:680px;margin:0 auto 14px;font-weight:800;position:relative}
-.cta-inner p{color:rgba(255,255,255,.92);max-width:540px;margin:0 auto 28px;font-size:1.06rem;position:relative}
-.cta-inner .btn{position:relative;font-size:1.05rem;padding:17px 32px}
+.cta-inner{position:relative;overflow:hidden;border-radius:var(--radius-lg);text-align:center;color:#fff;padding:72px 56px;
+  background:linear-gradient(135deg,var(--navy-deep) 0%,var(--navy) 50%,var(--teal-dark) 100%)}
+.cta-inner::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 60% 50% at 50% 100%,rgba(255,255,255,.08),transparent);pointer-events:none}
+.cta-inner .smile-deco{position:absolute;width:100px;height:36px;opacity:.4}
+.cta-inner .smile-deco.tl{top:24px;left:28px}
+.cta-inner .smile-deco.br{bottom:24px;right:28px;transform:rotate(180deg)}
+.cta-inner h2{color:#fff;font-size:clamp(1.55rem,3.2vw,2.2rem);max-width:640px;margin:0 auto 16px;font-weight:800;position:relative}
+.cta-inner p{color:rgba(255,255,255,.9);max-width:520px;margin:0 auto 30px;font-size:1.06rem;position:relative;line-height:1.55}
+.cta-inner .btn{position:relative;font-size:1.05rem;padding:17px 36px}
 
 /* depoimentos */
 .testi{background:var(--bg-soft)}
@@ -275,7 +276,7 @@ footer .btn{margin-top:8px}
   .about-grid,.loc-grid{grid-template-columns:1fr;gap:36px}
   .services-grid{grid-template-columns:repeat(2,1fr)}
   .diff-grid{grid-template-columns:repeat(3,1fr);gap:30px}
-  .proof-grid{grid-template-columns:repeat(2,1fr);gap:22px}
+  .proof-grid{grid-template-columns:repeat(2,1fr);gap:16px 28px}
   .footer-grid{grid-template-columns:1fr 1fr;gap:30px}
   .testi-card{flex:0 0 calc(50% - 11px)}
 }
@@ -283,26 +284,39 @@ footer .btn{margin-top:8px}
   :root{--stagger:60ms}
   .nav-links,.nav-cta{display:none}
   .hamburger{display:block}
-  .section{padding:72px 0}
-  .hero{padding:124px 0 72px}
-  .cta-inner{padding:50px 26px}
+  .section{padding:64px 0}
+  .hero{padding:124px 0 64px}
+  .cta-inner{padding:48px 26px;border-radius:20px}
+  .cta-inner .smile-deco{width:70px;height:26px}
+  .cta-inner .smile-deco.tl{top:16px;left:16px}
+  .cta-inner .smile-deco.br{bottom:16px;right:16px}
+  .cta-inner .btn{width:100%}
   .proof-item{justify-content:flex-start}
+  .proof-item p{font-size:.9rem}
   .testi-card{flex:0 0 100%}
 }
 @media(max-width:540px){
   .services-grid{grid-template-columns:1fr}
-  .diff-grid{grid-template-columns:1fr 1fr;gap:20px}
-  .proof-grid{grid-template-columns:1fr}
+  .diff-grid{grid-template-columns:1fr 1fr;gap:16px}
+  .proof-grid{grid-template-columns:1fr;gap:14px}
+  .proof-item .pic{width:26px;height:26px}
+  .proof-item p{font-size:.85rem}
   .footer-grid{grid-template-columns:1fr}
   .hero-actions .btn{width:100%}
   .container{padding:0 18px}
   .hero-floating{left:10px;padding:12px 14px}
-  .section-head h2{font-size:clamp(1.5rem,6vw,1.8rem)}
+  .section-head h2{font-size:clamp(1.4rem,6vw,1.7rem)}
+  .cta-band{padding:0 0 64px}
+  .cta-inner{padding:40px 22px}
+  .cta-inner h2{font-size:clamp(1.3rem,5.5vw,1.6rem)}
+  .cta-inner .btn{padding:15px 24px;font-size:1rem}
 }
 @media(max-width:400px){
-  .diff-grid{grid-template-columns:1fr;gap:24px}
-  .hero h1{font-size:clamp(1.6rem,7vw,2rem)}
+  .diff-grid{grid-template-columns:1fr;gap:20px}
+  .proof-grid{gap:12px}
+  .hero h1{font-size:clamp(1.5rem,7vw,1.9rem)}
   .hero-floating{display:none}
+  .cta-inner{padding:32px 18px}
 }
 @media(prefers-reduced-motion:reduce){
   *{scroll-behavior:auto!important}
@@ -403,19 +417,19 @@ footer .btn{margin-top:8px}
   <div class="container proof-grid">
     <div class="proof-item">
       <svg class="pic" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2l3 7 7 .5-5.5 5 1.5 7.5L12 18l-6 4 1.5-7.5L2 9.5 9 9z"/></svg>
-      <p><b>4,9 de 5</b> <span>· 405 avaliações no Google</span></p>
+      <p><b>4,9 de 5</b><span>405 avaliações no Google</span></p>
     </div>
     <div class="proof-item">
       <svg class="pic" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21v-6M8 21v-6M16 21v-6M4 12l8-8 8 8"/><path d="M6 12v5h12v-5"/></svg>
-      <p>Atendimento para <span>toda a família</span></p>
+      <p>Atendimento<span>para toda a família</span></p>
     </div>
     <div class="proof-item">
       <svg class="pic" viewBox="0 0 24 24" aria-hidden="true"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
-      <p>Centro de <span>Vitória da Conquista</span></p>
+      <p>Centro<span>Vitória da Conquista</span></p>
     </div>
     <div class="proof-item">
       <svg class="pic" viewBox="0 0 24 24" aria-hidden="true"><path d="M22 16.9v3a2 2 0 01-2.2 2A19.5 19.5 0 012 4.2 2 2 0 014 2h3a2 2 0 012 1.7c.3 1.2.8 2.3 1.4 3.3a2 2 0 01-.4 2.2L8.6 10a15 15 0 005.6 5.6l1.4-1.4a2 2 0 012.2-.4c1 .6 2.1 1.1 3.3 1.4A2 2 0 0122 16.9z"/></svg>
-      <p>Agendamento rápido <span>pelo WhatsApp</span></p>
+      <p>Agendamento<span>rápido pelo WhatsApp</span></p>
     </div>
   </div>
 </section>
